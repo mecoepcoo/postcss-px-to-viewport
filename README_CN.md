@@ -1,5 +1,5 @@
 # postcss-px-to-viewport
-[![NPM version](https://badge.fury.io/js/postcss-px-to-viewport.svg)](http://badge.fury.io/js/postcss-px-to-viewport)
+[![npm version](https://badge.fury.io/js/@tianz%2Fpostcss-px-to-viewport.svg)](https://badge.fury.io/js/@tianz%2Fpostcss-px-to-viewport)
 
 [English](README.md) | 中文
 
@@ -173,7 +173,7 @@ There are several more reasons why your pixels may not convert, the following op
 module.exports = {
   plugins: {
     // ...
-    'postcss-px-to-viewport': {
+    '@tianz/postcss-px-to-viewport': {
       // options
     }
   }
