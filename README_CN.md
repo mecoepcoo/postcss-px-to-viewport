@@ -131,7 +131,7 @@ $ yarn add -D postcss-px-to-viewport
     (`include: /\/src\/mobile\//`)
     - 如果值是一个正则表达式，将包含匹配的文件，否则将排除该文件
     - 如果传入的值是一个数组，那么数组里的值必须为正则
-- `landscape` (Boolean) 是否添加根据 `landscapeWidth` 生成的媒体查询条件 `@media (orientation: landscape)`
+- `landscape` (Boolean) 是否添加根据 `landscapeWidth` 生成的媒体查询条件 `@media (min-aspect-ratio: 13/9) and (orientation: landscape)`
 - `landscapeUnit` (String) 横屏时使用的单位
 - `landscapeWidth` (Number) 横屏时使用的视口宽度
 

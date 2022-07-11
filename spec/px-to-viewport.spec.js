@@ -541,7 +541,7 @@ describe('filter-prop-list', function () {
 describe('landscape', function() {
   it('should add landscape atRule', function() {
     var css = '.rule { font-size: 16px; margin: 16px; margin-left: 5px; padding: 5px; padding-right: 16px }';
-    var expected = '.rule { font-size: 5vw; margin: 5vw; margin-left: 1.5625vw; padding: 1.5625vw; padding-right: 5vw }@media (orientation: landscape) {.rule { font-size: 2.8169vw; margin: 2.8169vw; margin-left: 0.88028vw; padding: 0.88028vw; padding-right: 2.8169vw } }';
+    var expected = '.rule { font-size: 5vw; margin: 5vw; margin-left: 1.5625vw; padding: 1.5625vw; padding-right: 5vw }@media (min-aspect-ratio: 13/9) and (orientation: landscape) {.rule { font-size: 2.8169vw; margin: 2.8169vw; margin-left: 0.88028vw; padding: 0.88028vw; padding-right: 2.8169vw } }';
     var options = {
       landscape: true
     };
@@ -552,7 +552,7 @@ describe('landscape', function() {
 
   it('should add landscape atRule with specified landscapeUnits', function() {
     var css = '.rule { font-size: 16px; margin: 16px; margin-left: 5px; padding: 5px; padding-right: 16px }';
-    var expected = '.rule { font-size: 5vw; margin: 5vw; margin-left: 1.5625vw; padding: 1.5625vw; padding-right: 5vw }@media (orientation: landscape) {.rule { font-size: 2.8169vh; margin: 2.8169vh; margin-left: 0.88028vh; padding: 0.88028vh; padding-right: 2.8169vh } }';
+    var expected = '.rule { font-size: 5vw; margin: 5vw; margin-left: 1.5625vw; padding: 1.5625vw; padding-right: 5vw }@media (min-aspect-ratio: 13/9) and (orientation: landscape) {.rule { font-size: 2.8169vh; margin: 2.8169vh; margin-left: 0.88028vh; padding: 0.88028vh; padding-right: 2.8169vh } }';
     var options = {
       landscape: true,
       landscapeUnit: 'vh'
@@ -580,7 +580,7 @@ describe('landscape', function() {
       landscape: true
     };
     var processed = postcss(pxToViewport(options)).process(basicCSS).css;
-    var expected = '.rule { font-size: 15px; font-size: 4.6875vw }@media (orientation: landscape) {.rule { font-size: 2.64085vw } }';
+    var expected = '.rule { font-size: 15px; font-size: 4.6875vw }@media (min-aspect-ratio: 13/9) and (orientation: landscape) {.rule { font-size: 2.64085vw } }';
 
     expect(processed).toBe(expected);
   });
@@ -591,7 +591,7 @@ describe('landscape', function() {
       landscapeWidth: 768
     };
     var processed = postcss(pxToViewport(options)).process(basicCSS).css;
-    var expected = '.rule { font-size: 4.6875vw }@media (orientation: landscape) {.rule { font-size: 1.95313vw } }';
+    var expected = '.rule { font-size: 4.6875vw }@media (min-aspect-ratio: 13/9) and (orientation: landscape) {.rule { font-size: 1.95313vw } }';
 
     expect(processed).toBe(expected);
   });
