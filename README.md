@@ -131,7 +131,7 @@ Default Options:
     for example, only files under `src/mobile/` (`include: /\/src\/mobile\//`)
     - If the value is regexp, the matching file will be included, otherwise it will be excluded.
     - If value is array, the elements of the array are regexp.
-- `landscape` (Boolean) Adds `@media (orientation: landscape)` with values converted via `landscapeWidth`.
+- `landscape` (Boolean) Adds `@media (min-aspect-ratio: 13/9) and (orientation: landscape)` with values converted via `landscapeWidth`.
 - `landscapeUnit` (String) Expected unit for `landscape` option
 - `landscapeWidth` (Number) Viewport width for landscape orientation.
 

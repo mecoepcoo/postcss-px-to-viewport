@@ -137,7 +137,8 @@ module.exports = function (options) {
       );
 
       if (landscapeRules.length > 0) {
-        var landscapeRoot = new AtRule({ params: '(orientation: landscape)', name: 'media' });
+        // When keyboard popup in Android, it with use landscape, so that it should be min-aspect-ratio but not only landscape
+        var landscapeRoot = new AtRule({ params: '(min-aspect-ratio: 13/9) and (orientation: landscape)', name: 'media' });
   
         landscapeRules.forEach(function(rule) {
           landscapeRoot.append(rule);
