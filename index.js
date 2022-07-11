@@ -42,7 +42,7 @@ module.exports = function (options) {
           var file = rule.source && rule.source.input.file;
 
           // in windows, path use '\'
-          file = file.replace(/\\/g, '/')
+          file = file && file.replace(/\\/g, '/')
           if (opts.include && file) {
             if (Object.prototype.toString.call(opts.include) === '[object RegExp]') {
               if (!opts.include.test(file)) return;
