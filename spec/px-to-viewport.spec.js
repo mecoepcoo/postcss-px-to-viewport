@@ -124,6 +124,19 @@ describe('viewportWidth', function() {
 
     expect(processed).toBe(expected);
   })
+
+  it('should support using function viewportWidth', function() {
+    var expected = '.rule { font-size: 3.125vw }';
+
+    var options = {
+      viewportWidth: function () {
+        return 480
+      }
+    };
+    var processed = postcss(pxToViewport(options)).process(basicCSS).css;
+
+    expect(processed).toBe(expected);
+  })
 });
 
 describe('unitPrecision', function () {

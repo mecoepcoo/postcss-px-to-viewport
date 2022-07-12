@@ -38,8 +38,8 @@ module.exports = function (options) {
     postcssPlugin: 'postcss-px-to-viewport',
     Once (css, { result, AtRule }) {
       css.walkRules(function (rule) {
-          // Add exclude option to ignore some files like 'node_modules'
-          var file = rule.source && rule.source.input.file;
+        // Add exclude option to ignore some files like 'node_modules'
+        var file = rule.source && rule.source.input.file;
 
           // in windows, path use '\'
           file = file && file.replace(/\\/g, '/')
@@ -120,7 +120,9 @@ module.exports = function (options) {
               size = opts.landscapeWidth;
             } else {
               unit = getUnit(decl.prop, opts);
-              size = opts.viewportWidth;
+              size = typeof opts.viewportWidth === 'function'
+                ? opts.viewportWidth(rule.source.input)
+                : opts.viewportWidth;
             }
     
             var value = decl.value.replace(pxRegex, createPxReplace(opts, unit, size));
