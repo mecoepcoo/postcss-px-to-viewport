@@ -621,6 +621,30 @@ describe('landscape', function() {
   });
 });
 
+describe('multiple options', function() {
+  it('should work on multiple options', function () {
+    var css = 'h1 { margin: 0 0 20rpx; font-size: 32px; line-height: 2; letter-spacing: 1px; }';
+    var expected = 'h1 { margin: 0 0 2.67vmin; font-size: 1.67vw; line-height: 2; letter-spacing: 1px; }';
+    var options = [
+      {
+        unitToConvert: 'rpx',
+        viewportWidth: 750,
+        viewportUnit: 'vmin',
+        unitPrecision: 2,
+      },
+      {
+        unitToConvert: 'px',
+        viewportWidth: 1920,
+        viewportUnit: 'vw',
+        unitPrecision: 2,
+      },
+    ];
+    var processed = postcss(pxToViewport(options)).process(css).css;
+
+    expect(processed).toBe(expected);
+  });
+});
+
 describe('/* px-to-viewport-ignore */ & /* px-to-viewport-ignore-next */', function() {
   it('should ignore right-commented', function() {
     var css = '.rule { font-size: 15px; /* simple comment */ width: 100px; /* px-to-viewport-ignore */ height: 50px; }';
