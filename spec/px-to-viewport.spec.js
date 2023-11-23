@@ -609,6 +609,18 @@ describe('landscape', function() {
     expect(processed).toBe(expected);
   });
 
+  it('should add landscape atRule with specified landscapeAspectRatio', function() {
+    var options = {
+      landscape: true,
+      landscapeWidth: 768,
+      landscapeAspectRatio: '12/9',
+    };
+    var processed = postcss(pxToViewport(options)).process(basicCSS).css;
+    var expected = '.rule { font-size: 4.6875vw }@media (min-aspect-ratio: 12/9) and (orientation: landscape) {.rule { font-size: 1.95313vw } }';
+
+    expect(processed).toBe(expected);
+  });
+
   it('should not add landscape atRule if it has no nodes', function() {
     var css = '.rule { font-size: 15vw }';
     var options = {
