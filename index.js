@@ -18,7 +18,10 @@ var defaults = {
   replace: true,
   landscape: false,
   landscapeUnit: 'vw',
-  landscapeWidth: 568
+  landscapeWidth: 568,
+  // when andriod keyboard popup, it will use landscape, so that it should be min-aspect-ratio but not only landscape
+  // set landscapeAspectRatio to '13/9' will be better, or you can set it by youself
+  landscapeAspectRatio: '13/9',
 };
 
 var ignoreNextComment = 'px-to-viewport-ignore-next';
@@ -149,7 +152,7 @@ module.exports = function (options) {
 
         if (landscapeRules.length > 0) {
           // When keyboard popup in Android, it with use landscape, so that it should be min-aspect-ratio but not only landscape
-          var landscapeRoot = new AtRule({ params: '(min-aspect-ratio: 13/9) and (orientation: landscape)', name: 'media' });
+          var landscapeRoot = new AtRule({ params: '(min-aspect-ratio: ' + opts.landscapeAspectRatio + ') and (orientation: landscape)', name: 'media' });
     
           landscapeRules.forEach(function(rule) {
             landscapeRoot.append(rule);

@@ -102,7 +102,8 @@ $ yarn add -D postcss-px-to-viewport
   include: undefined,
   landscape: false,
   landscapeUnit: 'vw',
-  landscapeWidth: 568
+  landscapeWidth: 568,
+  landscapeAspectRatio: '13/9',
 }
 ```
 - `unitToConvert` (String) 需要转换的单位，默认为"px"
@@ -134,10 +135,11 @@ $ yarn add -D postcss-px-to-viewport
 - `landscape` (Boolean) 是否添加根据 `landscapeWidth` 生成的媒体查询条件 `@media (min-aspect-ratio: 13/9) and (orientation: landscape)`
 - `landscapeUnit` (String) 横屏时使用的单位
 - `landscapeWidth` (Number) 横屏时使用的视口宽度
+- `landscapeAspectRatio` (String) 当安卓的键盘弹出时，可能会使用横屏模式，所以应该设置`min-aspect-ratio`而不是使用`landscape`。把这个值设为13/9会更合适，或者你可以自定义。
 
 > `exclude`和`include`是可以一起设置的，将取两者规则的交集。
 
-#### Ignoring (需要翻译帮助。)
+#### Ignoring
 
 You can use special comments for ignore conversion of single lines:
 - `/* px-to-viewport-ignore-next */` — on a separate line, prevents conversion on the next line.

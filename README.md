@@ -102,7 +102,8 @@ Default Options:
   include: undefined,
   landscape: false,
   landscapeUnit: 'vw',
-  landscapeWidth: 568
+  landscapeWidth: 568,
+  landscapeAspectRatio: '13/9',
 }
 ```
 - `unitToConvert` (String) unit to convert, by default, it is px.
@@ -131,9 +132,10 @@ Default Options:
     for example, only files under `src/mobile/` (`include: /\/src\/mobile\//`)
     - If the value is regexp, the matching file will be included, otherwise it will be excluded.
     - If value is array, the elements of the array are regexp.
-- `landscape` (Boolean) Adds `@media (min-aspect-ratio: 13/9) and (orientation: landscape)` with values converted via `landscapeWidth`.
+- `landscape` (Boolean) Adds `@media (min-aspect-ratio: 13/9) and (orientation: landscape)` with values converted via `landscapeWidth`. You can set `min-aspect-ratio: 13/9` by set `landscapeAspectRatio`.
 - `landscapeUnit` (String) Expected unit for `landscape` option
 - `landscapeWidth` (Number) Viewport width for landscape orientation.
+- `landscapeAspectRatio` (String) When andriod keyboard popup, it will use landscape, so that it should be min-aspect-ratio but not only landscape. Set landscapeAspectRatio to '13/9' will be better, or you can set it by youself.
 
 > `exclude` and `include` can be set together, and the intersection of the two rules will be taken.
 
